@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "yuzushi",
+  "owner": {
+    "name": "yuzushi-dev",
+    "url": "https://github.com/yuzushi-dev"
+  },
+  "metadata": {
+    "description": "Plugin di yuzushi-dev per Claude Code e Codex.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "session-handoff",
+      "source": "./plugins/session-handoff",
+      "description": "Create handoffs and automatically continue in a fresh, secret-safe Codex or Claude session.",
+      "version": "0.5.0",
+      "author": { "name": "yuzushi-dev" },
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["handoff", "session", "context", "codex", "claude"]
+    }
+  ]
+}
