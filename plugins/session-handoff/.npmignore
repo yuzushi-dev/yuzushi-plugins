@@ -1,6 +1,0 @@
-**/__pycache__/
-*.pyc
-.git/
-.pytest_cache/
-tests/
-docs/

@@ -7,8 +7,9 @@
     {
       "name": "session-handoff",
       "source": {
-        "source": "local",
-        "path": "./plugins/session-handoff"
+        "source": "url",
+        "url": "https://github.com/yuzushi-dev/session-handoff.git",
+        "ref": "main"
       },
       "policy": {
         "installation": "AVAILABLE",
