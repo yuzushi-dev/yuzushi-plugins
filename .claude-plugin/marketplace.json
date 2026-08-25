@@ -19,6 +19,21 @@
       "license": "MIT",
       "category": "productivity",
       "keywords": ["handoff", "session", "context", "codex", "claude"]
+    },
+    {
+      "name": "sando",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yuzushi-dev/Sando.git",
+        "path": "adapters/claude/sando",
+        "ref": "main"
+      },
+      "description": "Cuts what Claude Code charges you to re-read its own tool output: redacts secrets, caps oversized results, trims history — no LLM calls.",
+      "version": "0.1.0",
+      "author": { "name": "yuzushi-dev" },
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["tokens", "context", "cost", "hooks", "mcp"]
     }
   ]
 }
