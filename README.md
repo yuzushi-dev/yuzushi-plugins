@@ -10,6 +10,22 @@ Session-handoff:
 npx session-handoff@latest setup
 ```
 
+To install the marketplace plugin instead:
+
+Claude Code:
+
+```text
+/plugin marketplace add yuzushi-dev/yuzushi-plugins
+/plugin install session-handoff@yuzushi
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add yuzushi-dev/yuzushi-plugins
+codex plugin add session-handoff@yuzushi
+```
+
 Sando plugin, Claude Code:
 
 ```text
