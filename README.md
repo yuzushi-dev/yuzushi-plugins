@@ -4,21 +4,26 @@ Plugins for Claude Code and Codex.
 
 ## Install
 
-Claude Code:
+Session-handoff:
+
+```bash
+npx session-handoff@latest setup
+```
+
+Sando plugin, Claude Code:
 
 ```text
 /plugin marketplace add yuzushi-dev/yuzushi-plugins
-/plugin install session-handoff@yuzushi
 /plugin install sando@yuzushi
 ```
 
-Codex:
+Sando plugin, Codex:
 
 ```bash
 codex plugin marketplace add yuzushi-dev/yuzushi-plugins
 ```
 
-Then run `/plugins` and install the plugins you want.
+Then run `/plugins` and install `sando`.
 
 ## Plugins
 
