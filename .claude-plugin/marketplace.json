@@ -17,8 +17,8 @@
         "url": "https://github.com/yuzushi-dev/session-handoff.git",
         "ref": "main"
       },
-      "description": "Create handoffs and automatically continue in a fresh, secret-safe Codex or Claude session.",
-      "version": "0.5.0",
+      "description": "Create handoffs and migrate sessions between Claude Code and Codex.",
+      "version": "0.5.3",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
@@ -32,8 +32,8 @@
         "path": "adapters/claude/sando",
         "ref": "main"
       },
-      "description": "Cuts what Claude Code charges you to re-read its own tool output: redacts secrets, caps oversized results, trims history — no LLM calls.",
-      "version": "0.1.0",
+      "description": "Reduce repeated tool-output context in Claude Code and Codex.",
+      "version": "0.1.3",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
