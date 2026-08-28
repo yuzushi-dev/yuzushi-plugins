@@ -4,6 +4,10 @@ Plugins for Claude Code and Codex.
 
 ## session-handoff
 
+<p>
+  <img src="https://raw.githubusercontent.com/yuzushi-dev/session-handoff/main/assets/session-handoff-mark.png" alt="session-handoff logo" width="72">
+</p>
+
 Create handoffs and continue work in a fresh session. It also supports migrating active sessions between Claude Code and Codex.
 
 Repository: https://github.com/yuzushi-dev/session-handoff
@@ -31,6 +35,10 @@ codex plugin add session-handoff@yuzushi
 ```
 
 ## Sando
+
+<p>
+  <img src="https://raw.githubusercontent.com/yuzushi-dev/Sando/main/assets/sando-mark.png" alt="Sando logo" width="72">
+</p>
 
 Reduce repeated and oversized tool-output context in Claude Code and Codex. Sando runs locally and makes no LLM calls.
 
