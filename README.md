@@ -2,15 +2,19 @@
 
 Plugins for Claude Code and Codex.
 
-## Install
+## session-handoff
 
-Session-handoff:
+Create handoffs and continue work in a fresh session. It also supports migrating active sessions between Claude Code and Codex.
+
+Repository: https://github.com/yuzushi-dev/session-handoff
+
+### Install with npx
 
 ```bash
 npx session-handoff@latest setup
 ```
 
-To install the marketplace plugin instead:
+### Install as a plugin
 
 Claude Code:
 
@@ -26,22 +30,25 @@ codex plugin marketplace add yuzushi-dev/yuzushi-plugins
 codex plugin add session-handoff@yuzushi
 ```
 
-Sando plugin, Claude Code:
+## Sando
+
+Reduce repeated and oversized tool-output context in Claude Code and Codex. Sando runs locally and makes no LLM calls.
+
+Repository: https://github.com/yuzushi-dev/Sando
+
+### Install as a plugin
+
+Claude Code:
 
 ```text
 /plugin marketplace add yuzushi-dev/yuzushi-plugins
 /plugin install sando@yuzushi
 ```
 
-Sando plugin, Codex:
+Codex:
 
 ```bash
 codex plugin marketplace add yuzushi-dev/yuzushi-plugins
 ```
 
-Then run `/plugins` and install `sando`.
-
-## Plugins
-
-- `session-handoff`: Create handoffs and migrate sessions between Claude Code and Codex.
-- `sando`: Reduce repeated tool-output context in Claude Code and Codex.
+Then open `/plugins`, select `sando`, and install/enable it.
