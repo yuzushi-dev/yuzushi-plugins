@@ -18,7 +18,7 @@
         "ref": "main"
       },
       "description": "Create handoffs and migrate sessions between Claude Code and Codex.",
-      "version": "0.5.5",
+      "version": "0.6.0",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
@@ -33,7 +33,7 @@
         "ref": "main"
       },
       "description": "Reduce repeated tool-output context in Claude Code and Codex.",
-      "version": "0.1.3",
+      "version": "0.2.0",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
