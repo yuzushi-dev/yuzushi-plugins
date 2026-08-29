@@ -9,7 +9,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/yuzushi-dev/session-handoff.git",
-        "ref": "main"
+        "ref": "v0.7.0"
       },
       "policy": {
         "installation": "AVAILABLE",
