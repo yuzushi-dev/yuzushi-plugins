@@ -65,7 +65,7 @@ jobs:
             assert.equal(plugin.source.path, path, `${name} source path`);
             assert.equal(plugin.source.ref, 'main', `${name} source ref`);
           }
-          assert.equal(claude.version, '0.4.0', 'Claude Sando version');
+          assert.equal(claude.version, '0.4.1', 'Claude Sando version');
 
           const readme = read('README.md');
           for (const text of [
