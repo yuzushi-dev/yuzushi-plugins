@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate marketplace metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.22.0'
+
+      - name: Validate manifests and public README
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync } from 'node:child_process';
+          import fs from 'node:fs';
+
+          const read = (path) => fs.readFileSync(path, 'utf8');
+          const readJson = (path) => JSON.parse(read(path));
+          const claudeMarketplace = readJson('.claude-plugin/marketplace.json');
+          const codexMarketplace = readJson('.agents/plugins/marketplace.json');
+
+          const trackedJson = execFileSync('git', ['ls-files', '*.json'], { encoding: 'utf8' })
+            .trim()
+            .split('\n')
+            .filter(Boolean);
+          for (const path of trackedJson) readJson(path);
+
+          const findSando = (marketplace) => {
+            const plugin = marketplace.plugins.find(({ name }) => name === 'sando');
+            assert(plugin, 'Sando entry is missing from marketplace metadata');
+            return plugin;
+          };
+
+          const claude = findSando(claudeMarketplace);
+          const codex = findSando(codexMarketplace);
+          const expectedUrl = 'https://github.com/yuzushi-dev/Sando.git';
+
+          for (const [name, plugin, path] of [
+            ['Claude', claude, 'adapters/claude/sando'],
+            ['Codex', codex, 'plugins/sando'],
+          ]) {
+            assert.equal(plugin.source.source, 'git-subdir', `${name} source type`);
+            assert.equal(plugin.source.url, expectedUrl, `${name} source URL`);
+            assert.equal(plugin.source.path, path, `${name} source path`);
+            assert.equal(plugin.source.ref, 'main', `${name} source ref`);
+          }
+          assert.equal(claude.version, '0.4.0', 'Claude Sando version');
+
+          const readme = read('README.md');
+          for (const text of [
+            'plugin install sando@yuzushi',
+            'codex plugin marketplace add yuzushi-dev/yuzushi-plugins',
+            'https://github.com/yuzushi-dev/Sando',
+          ]) {
+            assert(readme.includes(text), `README is missing: ${text}`);
+          }
+
+          const handoffs = execFileSync('git', ['ls-files', 'handoffs/**'], { encoding: 'utf8' }).trim();
+          assert.equal(handoffs, '', 'Internal handoffs must not be tracked in the public repository');
+          console.log('Marketplace metadata is valid.');
+          NODE
