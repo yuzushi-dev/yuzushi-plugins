@@ -30,7 +30,7 @@
         "source": "git-subdir",
         "url": "https://github.com/yuzushi-dev/Sando.git",
         "path": "adapters/claude/sando",
-        "ref": "main"
+        "ref": "v0.4.1"
       },
       "description": "Bound repeated tool-output context locally in Claude Code with deterministic hooks, provider accounting, and explicit local routes.",
       "version": "0.4.1",
