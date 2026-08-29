@@ -19,6 +19,7 @@
     },
     {
       "name": "sando",
+      "description": "Sando for Codex with deterministic local routes, provider accounting, paired controls, and sandboxed execution; the Claude Code companion is in this marketplace too.",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/yuzushi-dev/Sando.git",

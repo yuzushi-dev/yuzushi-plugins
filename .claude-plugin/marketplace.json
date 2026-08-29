@@ -32,12 +32,12 @@
         "path": "adapters/claude/sando",
         "ref": "main"
       },
-      "description": "Reduce repeated tool-output context in Claude Code and Codex.",
-      "version": "0.3.0",
+      "description": "Bound repeated tool-output context locally in Claude Code with deterministic hooks, provider accounting, and explicit local routes.",
+      "version": "0.4.0",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
-      "keywords": ["tokens", "context", "cost", "hooks", "mcp"]
+      "keywords": ["context", "accounting", "paired-controls", "hooks", "mcp", "claude", "codex"]
     }
   ]
 }
