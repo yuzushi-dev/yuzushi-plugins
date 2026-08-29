@@ -40,7 +40,7 @@ codex plugin add session-handoff@yuzushi
   <img src="https://raw.githubusercontent.com/yuzushi-dev/Sando/main/assets/sando-mark.png" alt="Sando logo" width="72">
 </p>
 
-Bound repeated and oversized tool-output context locally in Claude Code and Codex. Sando provides host-specific hooks and MCP surfaces, provider accounting, paired control/treatment measurement, and sandboxed execution on Codex; it makes no LLM calls.
+Sando bounds repeated and oversized tool output locally in Claude Code and Codex. It provides host-specific hooks and MCP surfaces, provider accounting, paired control/treatment measurements, and sandboxed execution on Codex. It makes no LLM calls.
 
 The Claude Code and Codex manifests expose different host wiring. See the [shipping matrix](https://github.com/yuzushi-dev/Sando/blob/main/docs/shipping-matrix.md) for the exact surfaces and limitations.
 
