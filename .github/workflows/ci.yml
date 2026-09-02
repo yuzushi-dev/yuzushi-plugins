@@ -56,14 +56,14 @@ jobs:
           const codex = findSando(codexMarketplace);
           const expectedUrl = 'https://github.com/yuzushi-dev/Sando.git';
 
-          for (const [name, plugin, path] of [
-            ['Claude', claude, 'adapters/claude/sando'],
-            ['Codex', codex, 'plugins/sando'],
+          for (const [name, plugin, path, ref] of [
+            ['Claude', claude, 'adapters/claude/sando', 'v0.4.2'],
+            ['Codex', codex, 'plugins/sando', 'main'],
           ]) {
             assert.equal(plugin.source.source, 'git-subdir', `${name} source type`);
             assert.equal(plugin.source.url, expectedUrl, `${name} source URL`);
             assert.equal(plugin.source.path, path, `${name} source path`);
-            assert.equal(plugin.source.ref, 'main', `${name} source ref`);
+            assert.equal(plugin.source.ref, ref, `${name} source ref`);
           }
           assert.equal(claude.version, '0.4.2', 'Claude Sando version');
 
