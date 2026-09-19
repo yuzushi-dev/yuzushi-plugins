@@ -24,7 +24,7 @@
         "source": "git-subdir",
         "url": "https://github.com/yuzushi-dev/Sando.git",
         "path": "plugins/sando",
-        "ref": "v0.6.0-jev"
+        "ref": "v0.7.0"
       },
       "policy": {
         "installation": "AVAILABLE",
