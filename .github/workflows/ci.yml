@@ -77,15 +77,15 @@ jobs:
           const expectedUrl = 'https://github.com/yuzushi-dev/Sando.git';
 
           for (const [name, plugin, path, ref] of [
-            ['Claude', claude, 'adapters/claude/sando', 'v0.7.0'],
-            ['Codex', codex, 'plugins/sando', 'v0.7.0'],
+            ['Claude', claude, 'adapters/claude/sando', 'v0.7.1'],
+            ['Codex', codex, 'plugins/sando', 'v0.7.1'],
           ]) {
             assert.equal(plugin.source.source, 'git-subdir', `${name} source type`);
             assert.equal(plugin.source.url, expectedUrl, `${name} source URL`);
             assert.equal(plugin.source.path, path, `${name} source path`);
             assert.equal(plugin.source.ref, ref, `${name} source ref`);
           }
-          assert.equal(claude.version, '0.7.0', 'Claude Sando version');
+          assert.equal(claude.version, '0.7.1', 'Claude Sando version');
 
           const readme = read('README.md');
           for (const text of [
