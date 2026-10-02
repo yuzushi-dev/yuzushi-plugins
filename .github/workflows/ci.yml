@@ -68,9 +68,9 @@ jobs:
           ]) {
             assert.equal(plugin.source.source, 'url', `${name} session-handoff source type`);
             assert.equal(plugin.source.url, expectedSessionHandoffUrl, `${name} session-handoff source URL`);
-            assert.equal(plugin.source.ref, 'v0.7.4-jev.4', `${name} session-handoff source ref`);
+            assert.equal(plugin.source.ref, 'v0.7.4-jev.5', `${name} session-handoff source ref`);
           }
-          assert.equal(claudeSessionHandoff.version, '0.7.4-jev.4', 'Claude session-handoff version');
+          assert.equal(claudeSessionHandoff.version, '0.7.4-jev.5', 'Claude session-handoff version');
 
           const claude = findSando(claudeMarketplace);
           const codex = findSando(codexMarketplace);
