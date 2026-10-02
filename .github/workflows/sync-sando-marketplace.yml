@@ -1,0 +1,75 @@
+name: Sync Sando marketplace
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-sando-marketplace
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync latest stable Sando release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          token: ${{ github.token }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.22.0'
+
+      - name: Discover latest stable Sando release
+        id: release
+        shell: bash
+        run: |
+          git ls-remote --tags --refs https://github.com/yuzushi-dev/Sando.git > "$RUNNER_TEMP/sando-tags"
+          tag="$(node scripts/resolve-latest-sando-tag.mjs < "$RUNNER_TEMP/sando-tags")"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch exact Sando release
+        shell: bash
+        env:
+          SANDO_TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          git init "$RUNNER_TEMP/sando"
+          git -C "$RUNNER_TEMP/sando" remote add origin https://github.com/yuzushi-dev/Sando.git
+          git -C "$RUNNER_TEMP/sando" fetch --depth=1 origin "refs/tags/$SANDO_TAG:refs/tags/$SANDO_TAG"
+          git -C "$RUNNER_TEMP/sando" checkout --detach "refs/tags/$SANDO_TAG"
+
+      - name: Update Sando marketplace metadata
+        env:
+          SANDO_TAG: ${{ steps.release.outputs.tag }}
+        run: node scripts/sync-sando-marketplace.mjs --root "$GITHUB_WORKSPACE" --source "$RUNNER_TEMP/sando" --tag "$SANDO_TAG"
+
+      - name: Validate update
+        run: |
+          node --test scripts/sando-marketplace.test.mjs
+          node scripts/validate-marketplace.mjs
+          unexpected="$(git diff --name-only | grep -Ev '^(\.agents/plugins/marketplace\.json|\.claude-plugin/marketplace\.json)$' || true)"
+          test -z "$unexpected" || { echo "Unexpected changed paths:"; echo "$unexpected"; exit 1; }
+
+      - name: Commit and push update
+        shell: bash
+        env:
+          SANDO_TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          git add .agents/plugins/marketplace.json .claude-plugin/marketplace.json
+          if git diff --cached --quiet; then
+            echo "Marketplace already points at $SANDO_TAG."
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -m "chore: release Sando ${SANDO_TAG#v}"
+          git push origin HEAD:main

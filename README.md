@@ -62,3 +62,5 @@ codex plugin marketplace add yuzushi-dev/yuzushi-plugins
 ```
 
 Then open `/plugins`, select `sando`, and install/enable it.
+
+Stable Sando release tags are synced to this marketplace daily. Codex CLI users can refresh the catalog with `codex plugin marketplace upgrade yuzushi` to pick up the latest Sando release.
