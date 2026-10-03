@@ -25,9 +25,9 @@ const codexSessionHandoff = plugin(codexMarketplace, 'session-handoff', 'Codex m
 for (const [label, entry] of [['Claude', claudeSessionHandoff], ['Codex', codexSessionHandoff]]) {
   assert.equal(entry.source.source, 'url', `${label} session-handoff source type`);
   assert.equal(entry.source.url, expectedSessionHandoffUrl, `${label} session-handoff source URL`);
-  assert.equal(entry.source.ref, 'v0.7.4-jev.5', `${label} session-handoff source ref`);
+  assert.equal(entry.source.ref, 'v0.7.5', `${label} session-handoff source ref`);
 }
-assert.equal(claudeSessionHandoff.version, '0.7.4-jev.5', 'Claude session-handoff version');
+assert.equal(claudeSessionHandoff.version, '0.7.5', 'Claude session-handoff version');
 
 const expectedSandoUrl = 'https://github.com/yuzushi-dev/Sando.git';
 const claudeSando = plugin(claudeMarketplace, 'sando', 'Claude marketplace');

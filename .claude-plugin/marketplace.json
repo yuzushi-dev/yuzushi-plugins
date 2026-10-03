@@ -15,10 +15,10 @@
       "source": {
         "source": "url",
         "url": "https://github.com/yuzushi-dev/session-handoff.git",
-        "ref": "v0.7.4-jev.5"
+        "ref": "v0.7.5"
       },
       "description": "Create handoffs and migrate sessions between Claude Code and Codex.",
-      "version": "0.7.4-jev.5",
+      "version": "0.7.5",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
@@ -30,10 +30,10 @@
         "source": "git-subdir",
         "url": "https://github.com/yuzushi-dev/Sando.git",
         "path": "adapters/claude/sando",
-        "ref": "v0.7.1"
+        "ref": "v0.8.0"
       },
       "description": "Bound repeated tool-output context locally in Claude Code with deterministic hooks, provider accounting, and explicit local routes.",
-      "version": "0.7.1",
+      "version": "0.8.0",
       "author": { "name": "yuzushi-dev" },
       "license": "MIT",
       "category": "productivity",
